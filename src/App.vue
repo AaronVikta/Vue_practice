@@ -1,20 +1,26 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app">
+    <current-time class="col-4"/>
+    <task-input class="col-6"/>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import CurrentTime from './components/currentTime.vue'
+import TaskInput from './components/TaskInput.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    CurrentTime,
+    TaskInput
   }
 }
 </script>
 
-<style>
+    TaskInput
+<style
+    CurrentTimeyle>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
