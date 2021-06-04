@@ -8,7 +8,7 @@
                 @input='task = $event.target.value'
                 class="taskInput"
             />
-            <button
+            <button class="btn-blue"
             v-on:click ="addTask"
             >
             Add Task
@@ -46,5 +46,9 @@ export default {
     border-radius: 3px;
     box-shadow: 0 1px 2px 0 rgba(0,0,0, 0.2);
 }
-
+.btn-blue{
+    background: rgba(119, 241, 137, 0.577);
+    opacity: 0.7;
+    cursor: pointer;
+}
 </style>

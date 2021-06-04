@@ -15,7 +15,7 @@
             id="hideDone"
             name="hideDone"
             />
-            <label for="hideDone">Hide Done</label>
+            <label for="hideDone">Hide Done Tasks</label>
           </div>
           <div class="col-4">
             <input type="checkbox"
@@ -38,7 +38,8 @@
           <ul class="taskList">
             <li 
             v-for="(taskItem, index) in displayList"
-            :key='`${index}_${Math.random()}`'>
+            :key='`${index}_${Math.random()}`'
+            :class="!!taskItem.finishedAt ? 'taskdone' : ''">
               <input type="checkbox"
               :checked="!!taskItem.finishedAt"
               @input="changeStatus(taskItem.id)"
@@ -147,7 +148,32 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+
 .taskList li{
+  list-style: none;
   text-align: left;
+  padding: 5px 10px;
+  border-bottom: 1px solid rgba(0,0,0,0.15);
+}
+
+.taskList li:last-child{
+  border-bottom: 0px;
+}
+.taskList li:nth-child(even){
+  background-color: rgba(0,0,0,0.05);
+}
+
+@keyframes colorChange {
+  from{
+    background-color:inherit;
+  }
+  to{
+    background-color: rgba(119, 241, 137, 0.577);
+  }
+}
+.taskList li.taskdone{
+  animation: colorChange 1.5s ease-in-out;
+  background-color: rgba(119, 241, 137, 0.577);
+
 }
 </style>
