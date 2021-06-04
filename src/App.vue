@@ -17,7 +17,7 @@
               />
               {{taskItem.task}}
               <span v-if="taskItem.finishedAt">
-                {{taskItem.finishedAt}}
+               Done at:  {{formatDate(taskItem.finishedAt)}}
               </span>
             </li>
           </ul>
@@ -61,6 +61,23 @@ export default {
       else{
         task.finishedAt = Date.now()
       }
+    },
+    formatDate(value){
+      if(!value) return "";
+      if (typeof value !== 'number') return value;
+      const browserLocale = navigator.languages && navigator.languages.length
+      ? navigator.languages[0]
+      :navigator.language;
+      const intlDateTime = new Intl.DateTimeFormat(
+        browserLocale,
+        {
+          year: 'numeric',
+          month: 'numeric',
+          day: 'numeric',
+          hour: 'numeric',
+          minute: 'numeric'
+        })
+        return intlDateTime.format(new Date(value))
     }
   }
 }
